@@ -36,7 +36,7 @@ export const NETWORK_NAME = dataSource.network()
 const network = NETWORK_NAME
 
 export const OCEAN: string =
-  network === 'mainnet'
+  (network === 'mainnet')
     ? '0x967da4048cd07ab37855c090aaf366e4ce1b9f48'
     : '0x8967BCF84170c91B0d24D4302C2376283b0B3a07'
 
