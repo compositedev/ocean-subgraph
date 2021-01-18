@@ -86,13 +86,17 @@ export function _handleRebind(
   const pool = Pool.load(poolId)
   const decimals = BigInt.fromI32(18).toI32()
 
-  if (tokenAddress !== OCEAN) {
-    pool.datatokenAddress = tokenAddress
-  }
   pool.tokenCount += BigInt.fromI32(1)
   const address = Address.fromString(tokenAddress)
   const denormWeight = hexToDecimal(denormWeightStr, decimals)
   const poolTokenId = poolId.concat('-').concat(address.toHexString())
+  if (tokenAddress !== OCEAN) {
+    pool.datatokenAddress = tokenAddress
+    debuglog('_handleRebind, process dataToken: ', event, [tokenAddress, poolId])
+  } else {
+    debuglog('_handleRebind, process oceanToken: ', event, [tokenAddress, poolId])
+  }
+
   let poolToken = PoolToken.load(poolTokenId)
   if (poolToken == null) {
     createPoolTokenEntity(poolTokenId, poolId, address.toHexString())
