@@ -27,7 +27,7 @@ import {
   createPoolTransaction,
   OCEAN,
   debuglog,
-  updatePoolTokenBalance
+  updatePoolTokenBalance, NETWORK_NAME
 } from '../helpers'
 
 /************************************
@@ -92,6 +92,7 @@ export function _handleRebind(
   const poolTokenId = poolId.concat('-').concat(address.toHexString())
   if (tokenAddress !== OCEAN) {
     pool.datatokenAddress = tokenAddress
+    debuglog('OCEAN address and network: ', null, [OCEAN, NETWORK_NAME])
     debuglog('_handleRebind, process dataToken: ', event, [tokenAddress, poolId])
   } else {
     debuglog('_handleRebind, process oceanToken: ', event, [tokenAddress, poolId])

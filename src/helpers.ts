@@ -32,7 +32,8 @@ export const BONE = BigDecimal.fromString('1000000000000000000')
 
 export const ENABLE_DEBUG = true
 
-const network = dataSource.network()
+export const NETWORK_NAME = dataSource.network()
+const network = NETWORK_NAME
 
 export const OCEAN: string =
   network === 'mainnet'
