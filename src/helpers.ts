@@ -250,8 +250,13 @@ export function createPoolTransaction(
     poolId.concat('-').concat(pool.datatokenAddress)
   )
 
-  if (ocnToken == null || dtToken == null) {
-    debuglog('?????????????? no oceanToken or no dtToken: ', event, [poolId, ocnToken.id, poolId.concat('-').concat(pool.datatokenAddress)])
+  if (ocnToken == null) {
+    debuglog('?????????????? no oceanToken: ', event, [poolId, ocnToken.id])
+    return
+  }
+
+  if (dtToken == null) {
+    debuglog('?????????????? no dtToken: ', event, [poolId, poolId.concat('-').concat(pool.datatokenAddress)])
     return
   }
 
